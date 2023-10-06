@@ -13,6 +13,11 @@ ClapTrap::~ClapTrap( void )
 	std::cout << "destructor is called" << std::endl;
 }
 
+void			ClapTrap::setHealth(unsigned int new_health)
+{
+	this->_health = new_health;
+}
+
 void			ClapTrap::setAttack(unsigned int new_attack)
 {
 	this->_attack = new_attack;
