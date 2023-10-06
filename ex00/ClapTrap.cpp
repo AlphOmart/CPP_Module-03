@@ -13,6 +13,20 @@ ClapTrap::~ClapTrap( void )
 	std::cout << "destructor is called" << std::endl;
 }
 
+void			ClapTrap::setAttack(unsigned int new_attack)
+{
+	this->_attack = new_attack;
+}
+
+unsigned int	ClapTrap::getAttack( void )
+{
+	return (this->_attack);
+}
+unsigned int	ClapTrap::getHealth( void )
+{
+	return (this->_health);
+}
+
 void	ClapTrap::attack(const std::string &target)
 {
 	if (this->_health && this->_stamina > 0)
@@ -24,6 +38,7 @@ void	ClapTrap::attack(const std::string &target)
 		return ;
 	}
 	std::cout << "ClapTrap " + this->_name + " can't attacks!" << std::endl;
+	this->_attack = 0;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -32,7 +47,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	{
 		std::cout << "ClapTrap " + this->_name + " take " << amount
 					<< " damages!" << std::endl;
-		this->health -= amount;
+		this->_health -= amount;
 		return ;
 	}
 	std::cout << "ClapTrap " + this->_name + " is already dead!" << std::endl;
@@ -40,14 +55,14 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->_stamina > 0)
+	if (this->_health > 0 && this->_stamina > 0)
 	{
-		std::cout << "ClapTrap " + this->_name + " regain"
-					<< amount<< "life point!" << std::endl;
+		std::cout << "ClapTrap " + this->_name + " regain "
+					<< amount<< " life point!" << std::endl;
 		this->_stamina -= 1;
 		this->_health += amount;
 		return;
 	}
-	std::cout << "ClapTrap " + this->_name + " doesn't have enough stamina!"
+	std::cout << "ClapTrap " + this->_name + " doesn't have enough life or stamina!"
 				<< std::endl;
 }
