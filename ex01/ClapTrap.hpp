@@ -5,28 +5,28 @@
 
 class ClapTrap
 {
-private:
+protected:
 	const std::string	_name;
-	int					_health;
-	int					_stamina;
-	int					_attack;
+	int		_health;
+	int		_stamina;
+	int		_attack;
 
 public:
+	ClapTrap( void );
+	ClapTrap( const ClapTrap& original);
 	ClapTrap(const std::string name);
 	~ClapTrap();
 
-	void		setHealth(unsigned int new_health);
-	void		setStamina(unsigned int new_stamina);
-	void		setAttack(unsigned int new_attack);
+	void			setAttack(unsigned int new_attack);
 
-	std::string	getName( void );
-	int			getHealth( void );
-	int			getStamina( void );
-	int			getAttack( void );
+	std::string		getName( void )const;
+	unsigned int	getHealth( void )const;
+	unsigned int	getStamina( void )const;
+	unsigned int	getAttack( void )const;
 
-	void		attack(const std::string& target);
-	void		takeDamage(unsigned int amount);
-	void		beRepaired(unsigned int amount);
+	void			attack(const std::string& target);
+	void			takeDamage(unsigned int amount);
+	void			beRepaired(unsigned int amount);
 };
 
 #endif
