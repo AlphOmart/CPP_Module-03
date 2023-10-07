@@ -1,12 +1,29 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(const std::string name) : _name(name)
+ClapTrap::ClapTrap( void ) :  _name("Unnamed")
 {
-	std::cout << "constructor is called" << std::endl;
+	std::cout << "default constructor is called!" << std::endl;
 	this->_health = 10;
 	this->_stamina = 10;
 	this->_attack = 0;
 }
+
+ClapTrap::ClapTrap(const ClapTrap& original) : _name(original.getName())
+{
+	std::cout << "Copy constructor is called!" << std::endl;
+	this->_health = original.getHealth();
+	this->_stamina = original.getStamina();
+	this->_attack = original.getAttack();
+}
+
+ClapTrap::ClapTrap(const std::string name) : _name(name)
+{
+	std::cout << "named constructor is called!" << std::endl;
+	this->_health = 10;
+	this->_stamina = 10;
+	this->_attack = 0;
+}
+
 
 ClapTrap::~ClapTrap( void )
 {
@@ -18,13 +35,24 @@ void			ClapTrap::setAttack(unsigned int new_attack)
 	this->_attack = new_attack;
 }
 
-unsigned int	ClapTrap::getAttack( void )
+std::string		ClapTrap::getName( void ) const
 {
-	return (this->_attack);
+	return (this->_name);
 }
-unsigned int	ClapTrap::getHealth( void )
+
+unsigned int	ClapTrap::getHealth( void ) const
 {
 	return (this->_health);
+}
+
+unsigned int	ClapTrap::getStamina( void ) const
+{
+	return (this->_stamina);
+}
+
+unsigned int	ClapTrap::getAttack( void ) const
+{
+	return (this->_attack);
 }
 
 void	ClapTrap::attack(const std::string &target)

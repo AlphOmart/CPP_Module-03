@@ -7,7 +7,7 @@ SRC			=	main.cpp \
 				ClapTrap.cpp
 OBJS_DIR	=	.OBJS/
 OBJS		=	$(addprefix $(OBJS_DIR), $(SRC:.cpp=.o))
-HEADER		=	ClapTrap.cpp
+HEADER		=	ClapTrap.hpp
 #---RULES----------------------------------------
 
 all:			$(NAME)
