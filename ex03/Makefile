@@ -6,12 +6,14 @@ FLAGS		=	-std=c++98 -Wall -Werror -Wextra -fsanitize=address
 SRC			=	main.cpp \
 				ClapTrap.cpp \
 				ScavTrap.cpp \
-				FragTrap.cpp
+				FragTrap.cpp \
+				DiamondTrap.cpp
 OBJS_DIR	=	.OBJS/
 OBJS		=	$(addprefix $(OBJS_DIR), $(SRC:.cpp=.o))
 HEADER		=	ClapTrap.hpp \
 				ScavTrap.hpp \
-				FragTrap.hpp
+				FragTrap.hpp \
+				DiamondTrap.hpp
 #---RULES----------------------------------------
 
 all:			$(NAME)
