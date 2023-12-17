@@ -18,7 +18,7 @@ HEADER		=	ClapTrap.hpp \
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS)
+$(NAME):		$(OBJS) $(HEADER)
 				@echo "\033[0;33m\nCOMPILING Serena ...\n"
 				@$(CXX) $(FLAGS) $(OBJS) -o $@
 				@echo "\033[1;32m./Serena created\n"
@@ -41,6 +41,7 @@ fclean:			clean
 				@rm -rf $(NAME)
 				@echo "\033[1;32mDone\n"
 
-re:				fclean all
+re:				fclean
+				$(MAKE) all
 
 .PHONY:			all clean fclean re
