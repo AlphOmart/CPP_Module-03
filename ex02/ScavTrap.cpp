@@ -1,5 +1,7 @@
 #include "ScavTrap.hpp"
 
+#include "FragTrap.hpp"
+
 ScavTrap::ScavTrap( void ) : ClapTrap()
 {
 	std::cout << "ScavTrap default constructor called" << std::endl;

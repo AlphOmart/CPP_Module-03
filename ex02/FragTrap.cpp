@@ -11,9 +11,7 @@ FragTrap::FragTrap( void ) : ClapTrap()
 FragTrap::FragTrap(const FragTrap &original) : ClapTrap(original.getName())
 {
 	std::cout << "FragTrap copy constructor is called!" << std::endl;
-	this->_hit_points = original.getHitPoint();
-	this->_energy_points = original.getEnergyPoint();
-	this->_attack_damage = original.getAttackDamage();
+	this->operator=(original);
 }
 
 FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
@@ -23,6 +21,18 @@ FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
 	this->_energy_points = 100;
 	this->_attack_damage = 30;
 }
+
+FragTrap&	FragTrap::operator=(const FragTrap &original)
+{
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (&original == this)
+		return (*this);
+	this->_hit_points = original.getHitPoint();
+	this->_energy_points = original.getEnergyPoint();
+	this->_attack_damage = original.getAttackDamage();
+	return (*this);
+}
+
 
 FragTrap::~FragTrap( void )
 {
