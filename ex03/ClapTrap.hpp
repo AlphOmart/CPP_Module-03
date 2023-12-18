@@ -6,14 +6,14 @@
 class ClapTrap
 {
 protected:
-	ClapTrap( void );
-	const std::string			_name;
+	std::string			_name;
 	unsigned int		_hit_points;
 	unsigned int		_energy_points;
 	unsigned int		_attack_damage;
 
 
 public:
+	ClapTrap( void );
 	ClapTrap(const std::string& name);
 	ClapTrap( const ClapTrap& original);
 	~ClapTrap();

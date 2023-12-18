@@ -5,11 +5,10 @@
 
 class ScavTrap : public virtual ClapTrap
 {
-protected:
-	ScavTrap( void );
 	bool	_keeper;
 
 public:
+	ScavTrap( void );
 	ScavTrap(const std::string& name);
 	ScavTrap (const ScavTrap& original);
 	~ScavTrap( void );
