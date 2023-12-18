@@ -1,22 +1,25 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap( void ) : ClapTrap()
+ScavTrap::ScavTrap( void )
 {
 	std::cout << "ScavTrap default constructor called" << std::endl;
+	this->_name = "Unnamed";
 	this->_hit_points = 100;
 	this->_energy_points = 50;
 	this->_attack_damage = 20;
+	this->_keeper = false;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& original) : ClapTrap(original.getName())
 {
 	std::cout << "ScavTrap  default constructor called" << std::endl;
-	this->operator=(original);
+	*this = original;
 }
 
-ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
+ScavTrap::ScavTrap(const std::string &name)
 {
-	std::cout << "ScavTrap constructor called" << std::endl;
+	std::cout << "Named ScavTrap constructor called" << std::endl;
+	this->_name = name;
 	this->_hit_points = 100;
 	this->_energy_points = 50;
 	this->_attack_damage = 20;
@@ -28,33 +31,12 @@ ScavTrap&	ScavTrap::operator=(const ScavTrap &original)
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (&original == this)
 		return (*this);
+	this->_name = original._name;
 	this->_hit_points = original._hit_points;
 	this->_energy_points = original._energy_points;
 	this->_attack_damage = original._attack_damage;
 	this->_keeper = original._keeper;
 	return (*this);
-}
-
-void	ScavTrap::takeDamage(unsigned int amount)
-{
-	if (this->_hit_points > 0)
-	{
-		if (_keeper == true)
-		{
-			std::cout << "ScavTrap " + this->_name + " blocked the shot !" << std::endl ;
-			return ;
-		}
-		std::cout << "ScavTrap " + this->_name + " take " << amount
-					<< " damages!" << std::endl;
-		if (this->_hit_points >= amount)
-		{
-			this->_hit_points -= amount;
-			return ;
-		}
-		this->_hit_points = 0;
-		return ;
-	}
-	std::cout << "ScavTrap " + this->_name + " is already dead!" << std::endl;
 }
 
 void	ScavTrap::attack(const std::string &target)

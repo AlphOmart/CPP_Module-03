@@ -14,7 +14,6 @@ public:
 	~ScavTrap( void );
 
 	ScavTrap&	operator=(const ScavTrap &original);
-	void	takeDamage(unsigned int amount);
 	void	attack(const std::string &target);
 	void	guardGate();
 };

@@ -8,18 +8,18 @@ ClapTrap::ClapTrap( void ) :  _name("Unnamed")
 	this->_attack_damage = 0;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& original) : _name(original.getName())
-{
-	std::cout << "Copy constructor is called!" << std::endl;
-	this->operator=(original);
-}
-
 ClapTrap::ClapTrap(const std::string &name) : _name(name)
 {
 	std::cout << "named constructor is called!" << std::endl;
 	this->_hit_points = 10;
 	this->_energy_points = 10;
 	this->_attack_damage = 0;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& original) : _name(original.getName())
+{
+	std::cout << "Copy constructor is called!" << std::endl;
+	*this = (original);
 }
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap &original)

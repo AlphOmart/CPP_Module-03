@@ -13,8 +13,8 @@ private:
 
 public:
 	ClapTrap( void );
-	ClapTrap( const ClapTrap& original);
 	ClapTrap(const std::string& name);
+	ClapTrap( const ClapTrap& original);
 	~ClapTrap();
 
 	ClapTrap&	operator=(const ClapTrap& original);

@@ -8,18 +8,23 @@ ClapTrap::ClapTrap( void ) :  _name("Unnamed")
 	this->_attack_damage = 0;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& original)
-{
-	std::cout << "Copy constructor is called!" << std::endl;
-	*this = original;
-}
-
 ClapTrap::ClapTrap(const std::string &name) : _name(name)
 {
 	std::cout << "named constructor is called!" << std::endl;
 	this->_hit_points = 10;
 	this->_energy_points = 10;
 	this->_attack_damage = 0;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& original)
+{
+	std::cout << "Copy constructor is called!" << std::endl;
+	*this = original;
+}
+
+ClapTrap::~ClapTrap( void )
+{
+	std::cout << "destructor is called" << std::endl;
 }
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap &original)
@@ -32,11 +37,6 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap &original)
 	this->_energy_points = original._energy_points;
 	this->_attack_damage = original._attack_damage;
 	return (*this);
-}
-
-ClapTrap::~ClapTrap( void )
-{
-	std::cout << "destructor is called" << std::endl;
 }
 
 void			ClapTrap::setAttack(unsigned int new_attack)
@@ -66,7 +66,7 @@ unsigned int	ClapTrap::getAttackDamage( void ) const
 
 void	ClapTrap::attack(const std::string &target)
 {
-	if (this->_hit_points && this->_energy_points > 0)
+	if (this->_hit_points > 0 && this->_energy_points > 0)
 	{
 		std::cout << "CalpTrap " + this->_name + " attacks "
 				  << target + ", causing " << this->_attack_damage

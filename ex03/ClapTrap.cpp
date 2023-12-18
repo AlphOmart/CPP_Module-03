@@ -1,8 +1,9 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap( void ) :  _name("Unnamed")
+ClapTrap::ClapTrap( void )
 {
 	std::cout << "default constructor is called!" << std::endl;
+	this->_name = "Unnamed";
 	this->_hit_points = 10;
 	this->_energy_points = 10;
 	this->_attack_damage = 0;
@@ -14,9 +15,10 @@ ClapTrap::ClapTrap(const ClapTrap& original) : _name(original.getName())
 	this->operator=(original);
 }
 
-ClapTrap::ClapTrap(const std::string& name) : _name(name)
+ClapTrap::ClapTrap(const std::string& name)
 {
-	std::cout << "named constructor is called!" << std::endl;
+	std::cout << "Named constructor is called!" << std::endl;
+	this->_name = name;
 	this->_hit_points = 10;
 	this->_energy_points = 10;
 	this->_attack_damage = 0;
@@ -27,6 +29,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap &original)
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (&original == this)
 		return (*this);
+	this->_name = original._name;
 	this->_hit_points = original._hit_points;
 	this->_energy_points = original._energy_points;
 	this->_attack_damage = original._attack_damage;
