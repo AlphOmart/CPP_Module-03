@@ -5,9 +5,8 @@
 
 class FragTrap : public ClapTrap
 {
-protected:
-	FragTrap( void );
 public:
+	FragTrap( void );
 	FragTrap( const FragTrap& original );
 	FragTrap( const std::string& name );
 	~FragTrap();
