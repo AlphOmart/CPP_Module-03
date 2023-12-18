@@ -2,9 +2,10 @@
 
 int main( void )
 {
-	ClapTrap Bob("Bob");
+	ClapTrap Bob;
 	ClapTrap Alan("Alan");
 
+	/*
 	Bob.attack("Alan");
 	Alan.takeDamage(Bob.getAttackDamage());
 	Alan.beRepaired(Bob.getAttackDamage());
@@ -14,11 +15,13 @@ int main( void )
 		Bob.attack("Alan");
 		Alan.takeDamage(Bob.getAttackDamage());
 	}
+	*/
 
 	Alan.setAttack(10);
 	Alan.attack("Bob");
-	Bob.takeDamage(Alan.getAttackDamage());
-	Bob.beRepaired(Alan.getAttackDamage());
+	Bob.takeDamage(50);
 	Bob.attack("Alan");
-
+	std::cout << std::endl << std::endl;
+	std::cout << Bob.getHitPoint() << std::endl;
+	Bob.beRepaired(1);
 }

@@ -8,10 +8,10 @@ ClapTrap::ClapTrap( void ) :  _name("Unnamed")
 	this->_attack_damage = 0;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& original) : _name(original.getName())
+ClapTrap::ClapTrap(const ClapTrap& original)
 {
 	std::cout << "Copy constructor is called!" << std::endl;
-	this->operator=(original);
+	*this = original;
 }
 
 ClapTrap::ClapTrap(const std::string &name) : _name(name)
@@ -27,6 +27,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap &original)
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (&original == this)
 		return (*this);
+	this->_name = original._name;
 	this->_hit_points = original._hit_points;
 	this->_energy_points = original._energy_points;
 	this->_attack_damage = original._attack_damage;
@@ -43,7 +44,7 @@ void			ClapTrap::setAttack(unsigned int new_attack)
 	this->_attack_damage = new_attack;
 }
 
-std::string		ClapTrap::getName( void ) const
+const std::string&	ClapTrap::getName( void ) const
 {
 	return (this->_name);
 }
@@ -83,7 +84,12 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	{
 		std::cout << "ClapTrap " + this->_name + " take " << amount
 					<< " damages!" << std::endl;
-		this->_hit_points -= amount;
+		if (this->_hit_points >= amount)
+		{
+			this->_hit_points -= amount;
+			return ;
+		}
+		this->_hit_points = 0;
 		return ;
 	}
 	std::cout << "ClapTrap " + this->_name + " is already dead!" << std::endl;
