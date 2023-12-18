@@ -20,6 +20,7 @@ ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 	this->_hit_points = 100;
 	this->_energy_points = 50;
 	this->_attack_damage = 20;
+	this->_keeper = false;
 }
 
 ScavTrap&	ScavTrap::operator=(const ScavTrap &original)
@@ -27,10 +28,28 @@ ScavTrap&	ScavTrap::operator=(const ScavTrap &original)
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (&original == this)
 		return (*this);
-	this->_hit_points = original.getHitPoint();
-	this->_energy_points = original.getEnergyPoint();
-	this->_attack_damage = original.getAttackDamage();
+	this->_hit_points = original._hit_points;
+	this->_energy_points = original._energy_points;
+	this->_attack_damage = original._attack_damage;
+	this->_keeper = original._keeper;
 	return (*this);
+}
+
+void	ScavTrap::takeDamage(unsigned int amount)
+{
+	if (this->_hit_points > 0)
+	{
+		if (_keeper == true)
+		{
+			std::cout << "ScavTrap " + this->_name + " blocked the shot !" << std::endl ;
+			return ;
+		}
+		std::cout << "ClapTrap " + this->_name + " take " << amount
+					<< " damages!" << std::endl;
+		this->_hit_points -= amount;
+		return ;
+	}
+	std::cout << "ClapTrap " + this->_name + " is already dead!" << std::endl;
 }
 
 void	ScavTrap::attack(const std::string &target)
@@ -48,8 +67,17 @@ void	ScavTrap::attack(const std::string &target)
 
 void	ScavTrap::guardGate( void )
 {
+	if (_keeper == false)
+	{
+		_keeper = true;
+		std::cout << "ScavTrap " + this->_name
+							<<" has enable Gate keeper mode!" << std::endl;
+		return ;
+	}
+	_keeper = false;
 	std::cout << " ScavTrap " + this->_name
-				<<" has enable Gate keeper mode!" << std::endl;
+							<<" has enable Gate keeper mode!" << std::endl;
+	return ;
 }
 
 ScavTrap::~ScavTrap( void )

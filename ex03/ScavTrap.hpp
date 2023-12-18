@@ -5,14 +5,18 @@
 
 class ScavTrap : public virtual ClapTrap
 {
-public:
+protected:
 	ScavTrap( void );
-	ScavTrap (const ScavTrap& original);
+	bool	_keeper;
+
+public:
 	ScavTrap(const std::string& name);
+	ScavTrap (const ScavTrap& original);
 	~ScavTrap( void );
 
 	ScavTrap&	operator=(const ScavTrap &original);
-	void	attack(const std::string &target);
+	virtual void	takeDamage(unsigned int amount);
+	virtual void	attack(const std::string &target);
 	void	guardGate();
 };
 

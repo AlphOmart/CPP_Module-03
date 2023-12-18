@@ -14,7 +14,7 @@ ClapTrap::ClapTrap(const ClapTrap& original) : _name(original.getName())
 	this->operator=(original);
 }
 
-ClapTrap::ClapTrap(const std::string name) : _name(name)
+ClapTrap::ClapTrap(const std::string& name) : _name(name)
 {
 	std::cout << "named constructor is called!" << std::endl;
 	this->_hit_points = 10;
@@ -27,9 +27,9 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap &original)
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (&original == this)
 		return (*this);
-	this->_hit_points = original.getHitPoint();
-	this->_energy_points = original.getEnergyPoint();
-	this->_attack_damage = original.getAttackDamage();
+	this->_hit_points = original._hit_points;
+	this->_energy_points = original._energy_points;
+	this->_attack_damage = original._attack_damage;
 	return (*this);
 }
 

@@ -6,7 +6,7 @@ int main( void )
 {
 	ClapTrap	Bob("Bob");
 	ScavTrap	Alan("Alan");
-	FragTrap	Stewe("Stewee");
+	FragTrap	Stewe("Stewe");
 
 	Bob.attack("Alan");
 	Alan.takeDamage(Bob.getAttackDamage());
@@ -17,5 +17,14 @@ int main( void )
 	Bob.beRepaired(Alan.getAttackDamage());
 	Bob.attack("Alan");
 
+	Alan.guardGate();
+	Bob.setAttack(20);
+	Bob.attack("Alan");
+	Alan.takeDamage(Bob.getAttackDamage());
+
+	Bob.attack("Stewe");
+	Stewe.takeDamage(Bob.getAttackDamage());
+	Stewe.attack("Bob");
+	Bob.takeDamage(Stewe.getAttackDamage());
 	Stewe.highFivesGuys();
 }

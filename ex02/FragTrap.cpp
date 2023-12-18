@@ -27,9 +27,9 @@ FragTrap&	FragTrap::operator=(const FragTrap &original)
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (&original == this)
 		return (*this);
-	this->_hit_points = original.getHitPoint();
-	this->_energy_points = original.getEnergyPoint();
-	this->_attack_damage = original.getAttackDamage();
+	this->_hit_points = original._hit_points;
+	this->_energy_points = original._energy_points;
+	this->_attack_damage = original._attack_damage;
 	return (*this);
 }
 

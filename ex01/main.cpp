@@ -15,4 +15,9 @@ int main( void )
 	Bob.beRepaired(Alan.getAttackDamage());
 	Bob.attack("Alan");
 
+	Alan.guardGate();
+	Bob.setAttack(20);
+	Bob.attack("Alan");
+	Alan.takeDamage(Bob.getAttackDamage());
+
 }
