@@ -1,8 +1,9 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap( void ) :  _name("Unnamed")
+ClapTrap::ClapTrap( void )
 {
 	std::cout << "default constructor is called!" << std::endl;
+	this->_name = "Unnamed";
 	this->_hit_points = 10;
 	this->_energy_points = 10;
 	this->_attack_damage = 0;
@@ -35,7 +36,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap &original)
 
 ClapTrap::~ClapTrap( void )
 {
-	std::cout << "destructor is called" << std::endl;
+	std::cout << "ClapTrap destructor is called" << std::endl;
 }
 
 void			ClapTrap::setAttack(unsigned int new_attack)
