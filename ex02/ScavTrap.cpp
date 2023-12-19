@@ -49,7 +49,7 @@ void	ScavTrap::attack(const std::string &target)
 		this->_energy_points -= 1;
 		return ;
 	}
-	std::cout << "ClapTrap " + this->_name+ " can't attacks!" << std::endl;
+	std::cout << "ScavTrap " + this->_name+ " can't attacks!" << std::endl;
 }
 
 void	ScavTrap::guardGate( void )
@@ -63,7 +63,7 @@ void	ScavTrap::guardGate( void )
 	}
 	_keeper = false;
 	std::cout << " ScavTrap " + this->_name
-							<<" has enable Gate keeper mode!" << std::endl;
+							<<" has disable Gate keeper mode!" << std::endl;
 }
 
 ScavTrap::~ScavTrap( void )
