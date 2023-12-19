@@ -5,7 +5,6 @@ int main( void )
 	ClapTrap Bob;
 	ClapTrap Alan("Alan");
 
-	/*
 	Bob.attack("Alan");
 	Alan.takeDamage(Bob.getAttackDamage());
 	Alan.beRepaired(Bob.getAttackDamage());
@@ -15,7 +14,6 @@ int main( void )
 		Bob.attack("Alan");
 		Alan.takeDamage(Bob.getAttackDamage());
 	}
-	*/
 
 	Alan.setAttack(10);
 	Alan.attack("Bob");
