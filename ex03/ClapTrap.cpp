@@ -9,10 +9,10 @@ ClapTrap::ClapTrap( void )
 	this->_attack_damage = 0;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& original) : _name(original.getName())
+ClapTrap::ClapTrap(const ClapTrap& original)
 {
 	std::cout << "Copy constructor is called!" << std::endl;
-	this->operator=(original);
+	*this = original;
 }
 
 ClapTrap::ClapTrap(const std::string& name)
@@ -38,7 +38,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap &original)
 
 ClapTrap::~ClapTrap( void )
 {
-	std::cout << "destructor is called" << std::endl;
+	std::cout << "ClapTrap destructor is called" << std::endl;
 }
 
 void			ClapTrap::setAttack(unsigned int new_attack)

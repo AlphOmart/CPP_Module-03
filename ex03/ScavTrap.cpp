@@ -1,8 +1,12 @@
 #include "ScavTrap.hpp"
 
+
+unsigned int	ScavTrap::_energy_points_max;
+
 ScavTrap::ScavTrap( void )
 {
 	std::cout << "ScavTrap default constructor called" << std::endl;
+	this->_energy_points_max = 50;
 	this->_hit_points = 100;
 	this->_energy_points = 50;
 	this->_attack_damage = 20;
@@ -18,6 +22,7 @@ ScavTrap::ScavTrap(const ScavTrap& original)
 ScavTrap::ScavTrap(const std::string &name)
 {
 	std::cout << "ScavTrap constructor called" << std::endl;
+	this->_energy_points_max = 50;
 	this->_name = name;
 	this->_hit_points = 100;
 	this->_energy_points = 50;
@@ -30,6 +35,7 @@ ScavTrap&	ScavTrap::operator=(const ScavTrap &original)
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (&original == this)
 		return (*this);
+	this->_energy_points_max = original._energy_points_max;
 	this->_hit_points = original._hit_points;
 	this->_energy_points = original._energy_points;
 	this->_attack_damage = original._attack_damage;
@@ -47,7 +53,7 @@ void	ScavTrap::attack(const std::string &target)
 		this->_energy_points -= 1;
 		return ;
 	}
-	std::cout << "ClapTrap " + this->_name+ " can't attacks!" << std::endl;
+	std::cout << "ScavTrap " + this->_name+ " can't attacks!" << std::endl;
 }
 
 void	ScavTrap::guardGate( void )
@@ -62,7 +68,10 @@ void	ScavTrap::guardGate( void )
 	_keeper = false;
 	std::cout << " ScavTrap " + this->_name
 							<<" has enable Gate keeper mode!" << std::endl;
-	return ;
+}
+unsigned int	ScavTrap::getEnergyPointMax()
+{
+	return (this->_energy_points_max);
 }
 
 ScavTrap::~ScavTrap( void )

@@ -1,34 +1,34 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap( void ) : ClapTrap("undifined_clap_name")
+DiamondTrap::DiamondTrap( void )
 {
 	std::cout << "Default constructor DiamondTrap called!" << std::endl;
-
-	this->_hit_points = this->FragTrap::_hit_points;
-	this->_energy_points = this->ScavTrap::_energy_points;
-	this->_attack_damage = this->FragTrap::_attack_damage;
+	this->ClapTrap::_name = "Unndifined_clap_name";
+	this->_name = "Unndifined";
+	this->_hit_points = FragTrap::_hit_points;
+	this->_energy_points = ScavTrap::getEnergyPointMax();;
+	this->_attack_damage = FragTrap::_attack_damage;
 }
 
-DiamondTrap::DiamondTrap(const std::string& name) :  ClapTrap(name + "_clap_name"), ScavTrap(name),
-			FragTrap(name), _name(name)
+DiamondTrap::DiamondTrap(const std::string& name) : ScavTrap(name), FragTrap(name)
 {
 	std::cout << "constructor DiamondTrap called!" << std::endl;
-	this->_hit_points = this->FragTrap::_hit_points;
-	this->_energy_points = this->ScavTrap::_energy_points;
-	this->_attack_damage = this->FragTrap::_attack_damage;
+	this->ClapTrap::_name = name + "_clap_name";
+	this->_name = name;
+	this->_hit_points = FragTrap::getHitPointsMax();
+	this->_energy_points = ScavTrap::getEnergyPointMax();
+	this->_attack_damage = FragTrap::getAttackDamageMax();
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &original) :
-			ClapTrap(original),
-			ScavTrap(original),
-			FragTrap(original)
+DiamondTrap::DiamondTrap(const DiamondTrap &original)
 {
 	std::cout << "Copy constructor DiamondTrap called!" << std::endl;
-	this->operator=(original);
+	*this = original;
 }
 
 DiamondTrap&	DiamondTrap::operator=(const DiamondTrap &original)
 {
+	this->ClapTrap::_name = original.ClapTrap::_name;
 	this->_name = original._name;
 	this->_hit_points = original._hit_points;
 	this->_energy_points = original._energy_points;
@@ -37,11 +37,6 @@ DiamondTrap&	DiamondTrap::operator=(const DiamondTrap &original)
 }
 DiamondTrap::~DiamondTrap() {
 	std::cout << "DiamondTrap Destructor Called" << std::endl;
-}
-
-void	DiamondTrap::attack( const std::string &target )
-{
-	this->ScavTrap::attack(target);
 }
 
 void	DiamondTrap::whoAmI()
